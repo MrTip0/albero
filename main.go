@@ -15,6 +15,10 @@ func main() {
 		os.Exit(1)
 	}
 
+	if n <= 0 {
+		os.Exit(0)
+	}
+
 	var newval int
 	done := false
 
