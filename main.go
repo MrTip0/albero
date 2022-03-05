@@ -47,6 +47,8 @@ func main() {
 		}
 	}
 
+	tree.Balance()
+
 	slice := tree.ToSlice()
 	l := len(slice)
 
