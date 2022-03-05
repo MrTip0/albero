@@ -36,9 +36,11 @@ func main() {
 			if _, err := fmt.Scanf("%d", &newval); err != nil {
 				fmt.Printf("Si è presentato il seguente errore: %s\n", err.Error())
 				done = false
+			} else if err := tree.InserisciOrdinato(newval); err != nil {
+				fmt.Printf("Si è presentato il seguente errore: %s\n", err.Error())
+				done = false
 			}
 		}
-		tree.InserisciOrdinato(newval)
 	}
 
 	slice := tree.ToSlice()
