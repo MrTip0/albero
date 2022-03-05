@@ -3,11 +3,16 @@ package binary
 import "fmt"
 
 func InitTree(val int) binaryTree {
-	radice := new(nodo)
-	radice.dx = nil
-	radice.sx = nil
-	radice.val = val
+	radice := newNodo(val)
 	return binaryTree{len: 1, radice: radice}
+}
+
+func newNodo(val int) *nodo {
+	r := new(nodo)
+	r.val = val
+	r.dx = nil
+	r.sx = nil
+	return r
 }
 
 type binaryTree struct {
@@ -40,31 +45,23 @@ func (b *binaryTree) ToSlice() []int {
 }
 
 func (n *nodo) InserisciOrdinato(val int) error {
-	var toInit *nodo
-
 	if val == n.val {
 		return fmt.Errorf("valore già presente")
 
 	} else if val > n.val {
 		if n.dx == nil {
-			toInit = new(nodo)
-			n.dx = toInit
+			n.dx = newNodo(val)
 		} else {
 			return n.dx.InserisciOrdinato(val)
 		}
 
 	} else {
 		if n.sx == nil {
-			toInit = new(nodo)
-			n.sx = toInit
+			n.sx = newNodo(val)
 		} else {
 			return n.sx.InserisciOrdinato(val)
 		}
 	}
-
-	toInit.dx = nil
-	toInit.sx = nil
-	toInit.val = val
 	return nil
 }
 
