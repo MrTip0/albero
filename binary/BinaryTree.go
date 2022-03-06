@@ -40,7 +40,7 @@ func (b *binaryTree) Trova(val int) bool {
 func (b *binaryTree) ToSlice() []int {
 	i := 0
 	r := make([]int, b.len)
-	b.radice.ToSlice(r, &i)
+	b.radice.toSlice(r, &i)
 	return r
 }
 
@@ -65,14 +65,14 @@ func (n *nodo) InserisciOrdinato(val int) error {
 	return nil
 }
 
-func (n *nodo) ToSlice(s []int, i *int) {
+func (n *nodo) toSlice(s []int, i *int) {
 	if n.sx != nil {
-		n.sx.ToSlice(s, i)
+		n.sx.toSlice(s, i)
 	}
 	s[*i] = n.val
 	*i++
 	if n.dx != nil {
-		n.dx.ToSlice(s, i)
+		n.dx.toSlice(s, i)
 	}
 }
 
