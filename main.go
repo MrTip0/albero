@@ -10,7 +10,7 @@ import (
 func main() {
 	var n int
 	fmt.Print("Inserisci la quantità di numeri dell'albero: ")
-	if _, err := fmt.Scanf("%d", &n); err != nil {
+	if _, err := fmt.Scan(&n); err != nil {
 		fmt.Printf("Si è presentato il seguente errore: %s\n", err.Error())
 		os.Exit(1)
 	}
@@ -25,7 +25,7 @@ func main() {
 	for !done {
 		done = true
 		fmt.Printf("Inserisci il primo numero: ")
-		if _, err := fmt.Scanf("%d", &newval); err != nil {
+		if _, err := fmt.Scan(&newval); err != nil {
 			fmt.Printf("Si è presentato il seguente errore: %s\n", err.Error())
 			done = false
 		}
@@ -37,7 +37,7 @@ func main() {
 		for !done {
 			done = true
 			fmt.Printf("Inserisci il %dº numero: ", i+1)
-			if _, err := fmt.Scanf("%d", &newval); err != nil {
+			if _, err := fmt.Scan(&newval); err != nil {
 				fmt.Printf("Si è presentato il seguente errore: %s\n", err.Error())
 				done = false
 			} else if err := tree.InserisciOrdinato(newval); err != nil {
@@ -52,15 +52,13 @@ func main() {
 	slice := tree.ToSlice()
 	l := len(slice)
 
-	for i := 0; i < l; i++ {
-		fmt.Printf("%d ", slice[i])
-	}
+	fmt.Printf("%v", slice)
 	fmt.Printf("\nLunghezza: %d\n", l)
 
 	fmt.Printf("Inserisci un numero da cercare: ")
 
 	var cerca int
-	if _, err := fmt.Scanf("%d", &cerca); err != nil {
+	if _, err := fmt.Scan(&cerca); err != nil {
 		fmt.Printf("Si è presentato il seguente errore: %s\n", err.Error())
 		os.Exit(1)
 	}
